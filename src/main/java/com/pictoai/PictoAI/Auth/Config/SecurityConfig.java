@@ -1,4 +1,4 @@
-package com.pictoai.PictoAI.Auth.Security;
+package com.pictoai.PictoAI.Auth.Config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
