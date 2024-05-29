@@ -21,6 +21,7 @@ import static net.sf.jsqlparser.util.validation.metadata.NamedObject.role;
 public class User implements UserDetails { // implementamos userdetails pq sino no funca la autenticacion
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "email",nullable = false)
     private String email;
