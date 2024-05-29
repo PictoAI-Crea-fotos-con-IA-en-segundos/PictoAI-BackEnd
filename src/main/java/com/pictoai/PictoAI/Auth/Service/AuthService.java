@@ -8,6 +8,7 @@ import com.pictoai.PictoAI.Auth.Model.enums.UserRol;
 import com.pictoai.PictoAI.Auth.Repository.UserRepository;
 import com.pictoai.PictoAI.Auth.Security.JWT.Service.JwtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,7 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
 
     public AuthResponse login(LoginRequest request){
         return null;
@@ -24,7 +26,7 @@ public class AuthService {
     public AuthResponse register(RegisterRequest registerRequest){
         User user = User.builder()
                 .email(registerRequest.getEmail())
-                .password(registerRequest.getPassword())
+                .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .firstname(registerRequest.getFirstname())
                 .lastname(registerRequest.getLastname())
                 .role(UserRol.USER)
