@@ -17,7 +17,7 @@ public class StableDiffusionController {
     @PostMapping("/generate")
     public ResponseEntity<Resource> generateImage(@RequestBody PromptRequest promptRequest) {
       
-        String stableDiffusionApiUrl = "https://e5cc-181-66-138-175.ngrok-free.app/sdapi/v1/txt2img";
+        String stableDiffusionApiUrl = "https://6262-181-66-138-81.ngrok-free.app/sdapi/v1/txt2img";
 
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
