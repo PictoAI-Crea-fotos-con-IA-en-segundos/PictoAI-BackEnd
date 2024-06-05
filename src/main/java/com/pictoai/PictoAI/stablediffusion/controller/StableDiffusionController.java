@@ -11,11 +11,12 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class StableDiffusionController {
 
     @PostMapping("/generate")
     public ResponseEntity<Resource> generateImage(@RequestBody PromptRequest promptRequest) {
+      
         String stableDiffusionApiUrl = "https://e5cc-181-66-138-175.ngrok-free.app/sdapi/v1/txt2img";
 
         RestTemplate restTemplate = new RestTemplate();
