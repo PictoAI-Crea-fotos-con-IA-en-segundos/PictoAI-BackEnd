@@ -3,12 +3,14 @@ package com.pictoai.PictoAI.Auth.Controller;
 import com.pictoai.PictoAI.Auth.Dto.AuthResponse;
 import com.pictoai.PictoAI.Auth.Dto.LoginRequest;
 import com.pictoai.PictoAI.Auth.Dto.RegisterRequest;
+import com.pictoai.PictoAI.Auth.Model.agreggates.User;
 import com.pictoai.PictoAI.Auth.Service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -26,6 +28,12 @@ public class AuthController {
     @PostMapping(value = "register")
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest registerRequest){
         return ResponseEntity.ok(authService.register(registerRequest));
+    }
+
+    @PostMapping(value = "getInfoByToken")
+    public ResponseEntity<User> getUserDetails(@RequestHeader("Authorization") String token) {
+        User user = authService.getUserDetailsFromToken(token.substring(7)); // Remove "Bearer " prefix
+        return ResponseEntity.ok(user);
     }
 
 
