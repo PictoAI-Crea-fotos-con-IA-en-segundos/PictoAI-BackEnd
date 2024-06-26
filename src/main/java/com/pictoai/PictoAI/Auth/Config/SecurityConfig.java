@@ -48,16 +48,17 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000/","*"));  // Corrige esto para permitir todos los orígenes
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // Solo añade aquí los orígenes explícitamente permitidos
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
         corsConfiguration.setExposedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setMaxAge(3600L);  // Establece esto a un valor razonable
+        corsConfiguration.setMaxAge(3600L); // Permite que los resultados de las solicitudes preflight se almacenen hasta 3600 segundos
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
     }
+
 
 }
